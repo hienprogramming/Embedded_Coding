@@ -1,19 +1,20 @@
+
 #ifndef __DELAY_H
 #define __DELAY_H
 
-
-// This code for compatibility between C and C++
-#ifdef __cplusphus
-    extern "C" {
+#ifdef __cplusplus
+ extern "C" {
 #endif
 
 #include "stm32f10x.h"
 
-// void DelayInit();
-// void Delayus()
+void DelayInit(void);
+void DelayUs(uint32_t us);
+void DelayMs(uint32_t ms);
 
-#ifdef __cplusphus
-    }
+#ifdef __cplusplus
+}
 #endif
 
 #endif
+

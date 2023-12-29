@@ -1,7 +1,7 @@
 #include "stm32f10x_gpio.h"
 #include "stm32f10x_rcc.h"
 #include "lcd16x2.h"
-#include "delay.h"
+#include "delay1.h"
 
 // https://www.youtube.com/watch?v=sXopHMgYJ-4
 
