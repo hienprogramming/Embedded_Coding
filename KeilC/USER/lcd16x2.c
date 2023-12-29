@@ -1,103 +1,103 @@
-#include "lcd16x2.h"
+#include "lcd16x2_1.h"
 
-#define LCD_RS      GPIO_Pin_13
-#define LCD_RW      GPIO_Pin_14
-#define LCD_EN      GPIO_Pin_15
+#define LCD_RS  GPIO_Pin_13
+#define LCD_RW  GPIO_Pin_14
+#define LCD_EN  GPIO_Pin_15
 
-#define LCD_D4      GPIO_Pin_8
-#define LCD_D5      GPIO_Pin_9
-#define LCD_D6      GPIO_Pin_10
-#define LCD_D7      GPIO_Pin_11
+#define LCD_D4  GPIO_Pin_8
+#define LCD_D5  GPIO_Pin_9
+#define LCD_D6  GPIO_Pin_10
+#define LCD_D7  GPIO_Pin_11
 
 void GPIO_LCD_Config(void)
 {
-    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA | RCC_APB2Periph_GPIOC, ENABLE);
-    GPIO_InitTypeDef        GPIO_LCD_InitStruction;
-    
-    /*Configure GPIO pin Output Level */
-    GPIO_WriteBit(GPIOA, LCD_D4|LCD_D5|LCD_D5|LCD_D7, 0); 
-    GPIO_WriteBit(GPIOC, LCD_RS|LCD_RW|LCD_EN, 0); 
-    
-    GPIO_LCD_InitStruction.GPIO_Mode    = GPIO_Mode_Out_PP;
-    GPIO_LCD_InitStruction.GPIO_Pin     = LCD_D4|LCD_D5|LCD_D6|LCD_D7;      
-    GPIO_LCD_InitStruction.GPIO_Speed   = GPIO_Speed_10MHz;
-    GPIO_Init(GPIOA, &GPIO_LCD_InitStruction);
+    GPIO_InitTypeDef   GPIO_LCD_Init;
+    RCC_APB2PeriphClockCmd (RCC_APB2Periph_GPIOA | RCC_APB2Periph_GPIOC, ENABLE);
 
+    GPIO_WriteBit(GPIOA, LCD_D4|LCD_D5|LCD_D6|LCD_D7, 0);
+    GPIO_WriteBit(GPIOC, LCD_RS|LCD_RW|LCD_EN, 0);
 
-    GPIO_LCD_InitStruction.GPIO_Pin =  LCD_EN|LCD_RS|LCD_RW;
-    GPIO_Init(GPIOC, &GPIO_LCD_InitStruction);
-}
+    GPIO_LCD_Init.GPIO_Mode = GPIO_Mode_Out_PP;
+    GPIO_LCD_Init.GPIO_Pin = LCD_D4|LCD_D5|LCD_D6|LCD_D7;
+    GPIO_LCD_Init.GPIO_Speed = GPIO_Speed_10MHz;
+    GPIO_Init(GPIOA, &GPIO_LCD_Init);
 
+    GPIO_LCD_Init.GPIO_Pin = LCD_RS|LCD_RW|LCD_EN;
+    GPIO_Init(GPIOC, &GPIO_LCD_Init);
+}   
+
+// LCD enable
 void LCD_Enable(void)
 {
-    GPIO_SetBits(GPIOC, LCD_EN);
+    GPIO_WriteBit(GPIOC, LCD_EN, ENABLE);
     DelayMs(1);
-    GPIO_ResetBits(GPIOC, LCD_EN);
+    GPIO_WriteBit(GPIOC, LCD_EN, DISABLE);
     DelayMs(1);
 }
 
 void LCD_Send4Bit(unsigned char Data)
 {
-  GPIO_WriteBit(GPIOA, LCD_D4, Data & 0x01);   // Gửi bit thấp nhất của biến Data tới chân LCD_D4
-  GPIO_WriteBit(GPIOA, LCD_D5, (Data>>1)&1);   // Gửi bit thấp hai của biến Data tới chân LCD_D5
-  GPIO_WriteBit(GPIOA, LCD_D6, (Data>>2)&1);   // Gửi bit thấp ba của biến Data tới chân LCD_D6
-  GPIO_WriteBit(GPIOA, LCD_D7, (Data>>3)&1);   // Gửi bit thấp tư của biến Data tới chân LCD_D7
+    GPIO_WriteBit(GPIOA, LCD_D4, Data & 0x01);
+    GPIO_WriteBit(GPIOA, LCD_D5, (Data >> 1) & 1);
+    GPIO_WriteBit(GPIOA, LCD_D6, (Data >> 2) & 1);
+    GPIO_WriteBit(GPIOA, LCD_D7, (Data >> 3) & 1);
 }
 
-void LCD_SendCommand(unsigned char command)
+void LCD_SendCommand(unsigned char command) // 8 bit
 {
-  LCD_Send4Bit(command >> 4);   // gữi 4 bit cao đầu tiên
-  LCD_Enable();
-  LCD_Send4Bit(command);
-  LCD_Enable();
-
+    LCD_Send4Bit(command >> 4);
+    LCD_Enable();
+    LCD_Send4Bit(command);
+    LCD_Enable();
 }
 
 void LCD_Clear()
 {
   LCD_SendCommand(0x01);
-  DelayUs(10);
+  DelayMs(2);
 }
 
 void LCD_Init()
 {
-  GPIO_LCD_Config();
-
-  LCD_Send4Bit(0x00);
-  // Nhận dữ liệu
-  GPIO_WriteBit(GPIOC, LCD_RS, 0);  
-  LCD_Send4Bit(0x03);  // return home -> đầu dòng đầu tiên
-  LCD_Enable();
-  // LCD_Enable();
-  // LCD_Enable();
-  LCD_Send4Bit(0x02);  // return home -> đầu dòng đầu tiên
-  LCD_Enable();
-  LCD_SendCommand(0x28); // giao thuc 4 bit, hien thi 2 hang, ki tu 5x8
-  LCD_SendCommand(0x0C); // cho phep hien thi man hinh
-  LCD_SendCommand(0x06); // tang ID, khong dich khung hinh
-  // LCD_SendCommand(0x01); // xoa toan bo khung hinh
+    GPIO_LCD_Config();
+    LCD_Send4Bit(0x00);
+    GPIO_WriteBit(GPIOC, LCD_RS, 0); 
+    LCD_Send4Bit(0x03);
+    LCD_Enable();
+    LCD_Send4Bit(0x02);
+    LCD_Enable();
+    LCD_SendCommand(0x28); 
+    LCD_SendCommand(0x0C);
+    LCD_SendCommand(0x06);
 }
 
 void LCD_Gotoxy(unsigned char x, unsigned char y)
 {
-  unsigned char address;
-  if(y == 0)address=(0x80 + x);  // Địa chỉ đầu tiên của hàng 1
-  else if(y == 1) address=(0xc0 + x);  // Địa chỉ đầu tiên của hàng 2
-  LCD_SendCommand(address);
+    unsigned char address;
+    if(y == 0)
+    {
+        address = 0x80 + x;
+    }
+    else if(y == 1){
+        address = 0xc0 + x;
+    }
+    LCD_SendCommand(address);
 }
 
 void LCD_PutChar(unsigned char Data)
 {
-  GPIO_SetBits(GPIOC, LCD_RS);
-  LCD_SendCommand(Data);
-  GPIO_ResetBits(GPIOC, LCD_RS);
+    GPIO_SetBits(GPIOC, LCD_RS);
+    LCD_SendCommand(Data);
+    GPIO_ResetBits(GPIOC, LCD_RS);
 }
 
 void LCD_Puts(char *s)
 {
-  while (*s)
-  {
-    LCD_PutChar(*s);
-    s++;
-  }
-}
+    while(*s){
+        LCD_PutChar(*s);
+        s++;
+    }
+} 
+
+
+

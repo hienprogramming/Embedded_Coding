@@ -1,5 +1,4 @@
 .\objects\main.o: ..\USER\main.c
-.\objects\main.o: ..\LIB\STM32F10x_StdPeriph_Lib_V3.5.0\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_gpio.h
 .\objects\main.o: ..\LIB\STM32F10x_StdPeriph_Lib_V3.5.0\Libraries\CMSIS\CM3\DeviceSupport\ST\STM32F10x\stm32f10x.h
 .\objects\main.o: ..\LIB\STM32F10x_StdPeriph_Lib_V3.5.0\Libraries\CMSIS\CM3\CoreSupport\core_cm3.h
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
@@ -31,4 +30,3 @@
 .\objects\main.o: ..\LIB\STM32F10x_StdPeriph_Lib_V3.5.0\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h
 .\objects\main.o: ..\USER\lcd16x2.h
 .\objects\main.o: ..\USER\delay.h
-.\objects\main.o: ..\USER\delay1.h

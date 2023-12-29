@@ -1,7 +1,7 @@
 --cpu Cortex-M3
+".\objects\delay.o"
+".\objects\lcd16x2.o"
 ".\objects\main.o"
-".\objects\lcd16x2_1.o"
-".\objects\delay1.o"
 ".\objects\stm32f10x_rcc.o"
 ".\objects\stm32f10x_gpio.o"
 ".\objects\startup_stm32f10x_md.o"

@@ -383,19 +383,19 @@
           <GroupName>user</GroupName>
           <Files>
             <File>
+              <FileName>delay.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\delay.c</FilePath>
+            </File>
+            <File>
+              <FileName>lcd16x2.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\lcd16x2.c</FilePath>
+            </File>
+            <File>
               <FileName>main.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\USER\main.c</FilePath>
-            </File>
-            <File>
-              <FileName>lcd16x2_1.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\USER\lcd16x2_1.c</FilePath>
-            </File>
-            <File>
-              <FileName>delay1.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\USER\delay1.c</FilePath>
             </File>
           </Files>
         </Group>

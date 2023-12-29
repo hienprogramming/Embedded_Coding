@@ -1,4 +1,4 @@
-#include "delay.h"
+#include "delay1.h"
 
 // For store tick counts in us
 static __IO uint32_t usTicks;
@@ -38,5 +38,4 @@ void DelayMs(uint32_t ms)
 		DelayUs(1000);
 	}
 }
-
 
