@@ -1,5 +1,5 @@
-.\objects\delay.o: ..\USER\delay.c
-.\objects\delay.o: ..\USER\delay.h
+.\objects\delay.o: ..\USER\Delay_System\delay.c
+.\objects\delay.o: ..\USER\Delay_System\delay.h
 .\objects\delay.o: ..\LIB\STM32F10x_StdPeriph_Lib_V3.5.0\Libraries\CMSIS\CM3\DeviceSupport\ST\STM32F10x\stm32f10x.h
 .\objects\delay.o: ..\LIB\STM32F10x_StdPeriph_Lib_V3.5.0\Libraries\CMSIS\CM3\CoreSupport\core_cm3.h
 .\objects\delay.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h

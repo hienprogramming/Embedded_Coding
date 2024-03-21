@@ -28,5 +28,8 @@
 .\objects\main.o: ..\LIB\STM32F10x_StdPeriph_Lib_V3.5.0\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h
 .\objects\main.o: ..\LIB\STM32F10x_StdPeriph_Lib_V3.5.0\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h
 .\objects\main.o: ..\LIB\STM32F10x_StdPeriph_Lib_V3.5.0\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h
-.\objects\main.o: ..\USER\lcd16x2.h
-.\objects\main.o: ..\USER\delay.h
+.\objects\main.o: ..\USER\LCD_Display\lcd16x2.h
+.\objects\main.o: ..\USER\Delay_System\delay.h
+.\objects\main.o: ..\USER\UART_Protocol\Usart_protocol.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

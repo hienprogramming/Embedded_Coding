@@ -1,5 +1,5 @@
-.\objects\lcd16x2.o: ..\USER\lcd16x2.c
-.\objects\lcd16x2.o: ..\USER\lcd16x2.h
+.\objects\lcd16x2.o: ..\USER\LCD_Display\lcd16x2.c
+.\objects\lcd16x2.o: ..\USER\LCD_Display\lcd16x2.h
 .\objects\lcd16x2.o: ..\LIB\STM32F10x_StdPeriph_Lib_V3.5.0\Libraries\CMSIS\CM3\DeviceSupport\ST\STM32F10x\stm32f10x.h
 .\objects\lcd16x2.o: ..\LIB\STM32F10x_StdPeriph_Lib_V3.5.0\Libraries\CMSIS\CM3\CoreSupport\core_cm3.h
 .\objects\lcd16x2.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
@@ -29,4 +29,4 @@
 .\objects\lcd16x2.o: ..\LIB\STM32F10x_StdPeriph_Lib_V3.5.0\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h
 .\objects\lcd16x2.o: ..\LIB\STM32F10x_StdPeriph_Lib_V3.5.0\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h
 .\objects\lcd16x2.o: ..\LIB\STM32F10x_StdPeriph_Lib_V3.5.0\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h
-.\objects\lcd16x2.o: ..\USER\delay.h
+.\objects\lcd16x2.o: ..\USER\Delay_System\delay.h

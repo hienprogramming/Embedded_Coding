@@ -1,3 +1,11 @@
 //https://www.youtube.com/@duongtukien8070/videos
 // CRC: https://www.youtube.com/watch?v=IC-2ZkL53Ig
 // Full course: https://www.youtube.com/watch?v=Vzb_FaOf6fs&list=PLGZ_RWetU5HIujfmFNcugirRMGa9UMTo6
+
+// STM32, Linux, ...
+https://www.youtube.com/@NgoHungCuong/playlists
+
+
+//First: https://www.youtube.com/watch?v=rFrV_P4BzzY
+
+// C#:  https://www.youtube.com/watch?v=xV16Fex3p8A&list=PLOni2KLgdgUEeMA6GKmhvTJoEHW73hzUK

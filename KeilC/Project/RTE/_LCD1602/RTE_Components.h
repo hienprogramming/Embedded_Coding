@@ -3,7 +3,7 @@
  * Auto generated Run-Time-Environment Configuration File
  *      *** Do not modify ! ***
  *
- * Project: 'LCD1602' 
+ * Project: 'LM35' 
  * Target:  'LCD1602' 
  */
 
