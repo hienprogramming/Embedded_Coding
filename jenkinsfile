@@ -15,34 +15,14 @@ pipeline {
             }
         }
         stage('Deploy') {
+            when {
+                // Deploy only if the branch is Master
+                branch 'Master'
+            }
             steps {
-                script {
-                    // Transfer the artifact using Publish Over SSH plugin
-                    sshPublisher(
-                        failOnError: true,
-                        publishers: [
-                            sshPublisherDesc(
-                                configName: 'git@github.com:hienprogramming/Embedded_Coding.git',
-                                transfers: [
-                                    sshTransfer(
-                                        execCommand: '',
-                                        execTimeout: 120000,
-                                        flatten: false,
-                                        makeEmptyDirs: false,
-                                        noDefaultExcludes: false,
-                                        patternSeparator: '[, ]+',
-                                        remoteDirectory: 'https://github.com/hienprogramming/Embedded_Coding.git',
-                                        remoteDirectorySDF: false,
-                                        removePrefix: 'target/',
-                                        sourceFiles: 'target/myapp.jar'
-                                    )
-                                ]
-                            )
-                        ]
-                    )
-                }
+                // Add your deployment commands here
+                sh 'scp target/myapp.jar user@server:D:\Jenkins'
             }
         }
     }
 }
-
