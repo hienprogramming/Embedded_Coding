@@ -16,13 +16,13 @@ pipeline {
         }
         stage('Deploy') {
             when {
-                // Deploy only if the branch is Master
-                branch 'Master'
+                // Deploy only if the branch is master
+                branch 'master'
             }
             steps {
                 // Add your deployment commands here
-                // sh 'scp target/myapp.jar user@server:D:/Jenkins'
-				git clone https://github.com/hienprogramming/Embedded_Coding.git
+                // For example, copy the built artifact to the deployment directory
+                sh 'cp target/myapp.jar D:/Jenkins'
             }
         }
     }
