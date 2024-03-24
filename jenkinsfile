@@ -31,7 +31,7 @@ pipeline {
                                         makeEmptyDirs: false,
                                         noDefaultExcludes: false,
                                         patternSeparator: '[, ]+',
-                                        remoteDirectory: 'https://github.com/hienprogramming/Embedded_Coding',
+                                        remoteDirectory: 'https://github.com/hienprogramming/Embedded_Coding.git',
                                         remoteDirectorySDF: false,
                                         removePrefix: 'target/',
                                         sourceFiles: 'target/myapp.jar'
