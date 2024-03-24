@@ -19,7 +19,7 @@ pipeline {
                     subject: "Error in Pipeline",
                     body: "An error occurred in the Jenkins pipeline.",
                     from: "jenkins@localhost",
-                    to: "ssbostan@linuxmail.org"
+                    to: "bachhien500@gmail.com"
                 )
             }
         }
