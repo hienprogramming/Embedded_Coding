@@ -1,25 +1,48 @@
 pipeline {
     agent any
+    
     stages {
         stage('Build') {
             steps {
-                echo "Build"
+                // Add your build commands here
+                sh 'mvn clean package'
             }
         }
         stage('Test') {
             steps {
-                echo "Test"
+                // Add your test commands here
+                sh 'mvn test'
             }
         }
         stage('Deploy') {
             steps {
-                echo "Deploy"
-            }
-        }
-		stage('Hien') {
-            steps {
-                echo "Hien"
+                script {
+                    // Transfer the artifact using Publish Over SSH plugin
+                    sshPublisher(
+                        failOnError: true,
+                        publishers: [
+                            sshPublisherDesc(
+                                configName: 'SSH_Server_Config',
+                                transfers: [
+                                    sshTransfer(
+                                        execCommand: '',
+                                        execTimeout: 120000,
+                                        flatten: false,
+                                        makeEmptyDirs: false,
+                                        noDefaultExcludes: false,
+                                        patternSeparator: '[, ]+',
+                                        remoteDirectory: 'https://github.com/hienprogramming/Embedded_Coding',
+                                        remoteDirectorySDF: false,
+                                        removePrefix: 'target/',
+                                        sourceFiles: 'target/myapp.jar'
+                                    )
+                                ]
+                            )
+                        ]
+                    )
+                }
             }
         }
     }
 }
+
