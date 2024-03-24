@@ -21,7 +21,8 @@ pipeline {
             }
             steps {
                 // Add your deployment commands here
-                sh 'scp target/myapp.jar user@server:D:/Jenkins'
+                // sh 'scp target/myapp.jar user@server:D:/Jenkins'
+				git clone https://github.com/hienprogramming/Embedded_Coding.git
             }
         }
     }
