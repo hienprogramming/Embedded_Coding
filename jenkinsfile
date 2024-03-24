@@ -14,16 +14,10 @@ pipeline {
                 echo "Test"
             }
         }
-        stage('Deploy') {
-            when {
-                // Deploy only if the branch is master
-                branch 'master'
-            }
+        stage('Clone') {
             steps {
-                // Add your deployment commands here
-                // For example, copy the built artifact to the deployment directory
-                sh 'cp target/myapp.jar D:/Jenkins'
-            }
+                git 'https://github.com/hienprogramming/Embedded_Coding.git'
+            }			
         }
     }
 }
