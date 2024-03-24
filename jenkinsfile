@@ -8,15 +8,24 @@ pipeline {
                 echo "Build"
             }
         }
-        stage('Test') {
+        stage("Test") {
             steps {
-                // Add your test commands here
-                echo "Test"
+                catchError(
+                    message: "Error inside the catchError block"
+                ) {
+                    sh "false"
+                }
+                mail(
+                    subject: "Error in Pipeline",
+                    body: "An error occurred in the Jenkins pipeline.",
+                    from: "jenkins@localhost",
+                    to: "ssbostan@linuxmail.org"
+                )
             }
         }
         stage('Clone') {
             steps {
-				// test jenkins hihi hihi commit 14
+				// test jenkins hihi
                 git 'https://github.com/hienprogramming/Embedded_Coding.git'
             }			
         }
