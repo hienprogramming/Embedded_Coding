@@ -22,7 +22,7 @@ pipeline {
                         failOnError: true,
                         publishers: [
                             sshPublisherDesc(
-                                configName: 'SSH_Server_Config',
+                                configName: 'git@github.com:hienprogramming/Embedded_Coding.git',
                                 transfers: [
                                     sshTransfer(
                                         execCommand: '',
