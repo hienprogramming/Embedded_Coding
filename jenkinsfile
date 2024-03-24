@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Clone') {
             steps {
-				// test jenkins
+				// test jenkins hihi
                 git 'https://github.com/hienprogramming/Embedded_Coding.git'
             }			
         }
